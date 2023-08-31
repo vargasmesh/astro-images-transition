@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  images: ImageMetadata[];
+}
+
+const { images } = Astro.props;
+---
+
+<section class="grid grid-cols-3 items-center gap-4">
+  {
+    images.map((image) => (
+      <div class="flex justify-center">
+        <Image
+          src={image}
+          alt=""
+          width={150}
+          height={150}
+          transition:animate="initial"
+        />
+      </div>
+    ))
+  }
+</section>

@@ -1,0 +1,25 @@
+---
+import TechGrid from "../components/TechGrid.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+type ImageGlob = {
+  default: ImageMetadata;
+};
+
+const images = (
+  await Astro.glob<ImageGlob>("../assets/**/*.{png,jpg,jpeg,gif,svg}")
+)
+  .map((image) => image.default)
+  .slice(0, 3);
+---
+
+<BaseLayout>
+  <main class="container mx-auto mt-40">
+    <a
+      href="/best-techs"
+      class="text-xl font-bold underline decoration-dashed underline-offset-4 text-blue-500"
+      >See best techs</a
+    >
+    <TechGrid images={images} />
+  </main>
+</BaseLayout>
